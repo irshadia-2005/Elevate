@@ -277,23 +277,6 @@ Monitor Dashboard → View Placement Stats → Analyze Skills → Generate Repor
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
-MIT © 2026 Team Nymbyte
-
----
-
-## 🙏 Acknowledgments
-
-- **Smart India Hackathon** for the platform and opportunity
-- **Problem Setter** for the insightful problem statement
-- **Mentors & Judges** for guidance and feedback
-- **All Stakeholders** — students, educators, industry partners
-
----
-
 ## 📝 Notes
 
 ### Demo Limitations
