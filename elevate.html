@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexora — SkillMatch</title>
+  <link rel="stylesheet" href="elevate.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">E</span> Elevate</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#how">How it works</a>
+      <a href="#opportunities">Opportunities</a>
+      <a href="#dashboard" onclick="goToDashboard(event)">Dashboard</a>
+    </nav>
+    <button class="outline-btn" onclick="showLogin()">Login</button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <span class="eyebrow">SKILLMATCH ECOSYSTEM</span>
+        <h1>From <span>Skills</span><br>to Opportunities.</h1>
+        <p>Elevate connects students, industry, academia and institutions through skill-first matching.</p>
+        <div class="hero-actions">
+          <button class="primary-btn" onclick="scrollToId('roles')">Get Started</button>
+          <button class="secondary-btn" onclick="scrollToId('opportunities')">Explore Opportunities</button>
+        </div>
+      </div>
+      <div class="match-card">
+        <div class="match-head"><span>SkillMatch Engine</span><span class="status">● Active</span></div>
+        <div class="match-score">87<span>%</span></div>
+        <p>Match with Frontend Development Intern</p>
+        <div class="skill-row"><span>React</span><b>92%</b></div>
+        <div class="bar"><i style="width:92%"></i></div>
+        <div class="skill-row"><span>JavaScript</span><b>84%</b></div>
+        <div class="bar"><i style="width:84%"></i></div>
+        <div class="skill-row"><span>HTML / CSS</span><b>95%</b></div>
+        <div class="bar"><i style="width:95%"></i></div>
+      </div>
+    </section>
+
+    <section id="how" class="section">
+      <div class="section-title">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>One platform. Complete journey.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><b>01</b><h3>Assess</h3><p>Measure current skills and identify strengths.</p></div>
+        <div class="step"><b>02</b><h3>Map</h3><p>Connect skills with career paths and roles.</p></div>
+        <div class="step"><b>03</b><h3>Upskill</h3><p>Get learning recommendations for skill gaps.</p></div>
+        <div class="step"><b>04</b><h3>Match</h3><p>Find internships, projects and jobs based on skills.</p></div>
+      </div>
+    </section>
+
+    <section id="roles" class="section soft">
+      <div class="section-title">
+        <span class="eyebrow">ELEVATE ECOSYSTEM</span>
+        <h2>Choose your role</h2>
+      </div>
+      <div class="roles">
+        <button class="role-card" onclick="openRoleLogin('Student')"><span>🎓</span><h3>Student</h3><p>Assess skills, upskill and discover opportunities.</p></button>
+        <button class="role-card" onclick="openRoleLogin('Industry')"><span>🏢</span><h3>Industry</h3><p>Find skilled candidates and create opportunities.</p></button>
+        <button class="role-card" onclick="openRoleLogin('Academia')"><span>🏫</span><h3>Academia</h3><p>Track skill gaps and connect with industry.</p></button>
+      </div>
+    </section>
+
+    <section id="opportunities" class="section">
+      <div class="section-title row-title">
+        <div><span class="eyebrow">OPPORTUNITIES</span><h2>Find your next opportunity</h2></div>
+        <select id="filter" onchange="filterJobs()"><option value="all">All</option><option value="internship">Internships</option><option value="job">Jobs</option><option value="project">Projects</option></select>
+      </div>
+      <div id="jobs" class="jobs">
+        <article class="job" data-type="internship"><div class="job-icon">TN</div><div><h3>Frontend Development Intern</h3><p>TechNova · Remote</p><div class="tags"><span>React</span><span>JavaScript</span><span>CSS</span></div></div><strong>87% Match</strong><button onclick="apply(this)">Apply</button></article>
+        <article class="job" data-type="job"><div class="job-icon">DA</div><div><h3>Junior Data Analyst</h3><p>DataAxis · Mumbai</p><div class="tags"><span>Python</span><span>SQL</span><span>Excel</span></div></div><strong>81% Match</strong><button onclick="apply(this)">Apply</button></article>
+        <article class="job" data-type="project"><div class="job-icon">AI</div><div><h3>AI Skill Assessment Project</h3><p>InnovateLab · Hybrid</p><div class="tags"><span>Python</span><span>NLP</span><span>ML</span></div></div><strong>76% Match</strong><button onclick="apply(this)">Apply</button></article>
+      </div>
+    </section>
+
+    <section id="dashboard" class="section dashboard-section">
+      <div class="section-title">
+        <span class="eyebrow">DASHBOARD</span>
+        <h2 id="dash-title">Login to view dashboard</h2>
+      </div>
+      <div class="dash-lock" id="dashLock">
+        <h3>Dashboard is locked</h3><p>Select your role and enter its password to continue.</p><div class="dash-lock-roles"><button class="secondary-btn" onclick="openRoleLogin('Student')">Student Login</button><button class="secondary-btn" onclick="openRoleLogin('Industry')">Industry Login</button><button class="secondary-btn" onclick="openRoleLogin('Academia')">Academia Login</button></div></div>
+      <div class="dashboard" id="genericDashboard" style="display:none">
+        <aside class="side">
+          <div class="mini-brand">Nexora</div>
+          <button class="active">Dashboard</button>
+          <button>Skill Assessment</button>
+          <button>My Skills</button>
+          <button>Opportunities</button>
+          <button>Applications</button>
+          <button>Digital Portfolio</button>
+          <button onclick="genericLogout()">Logout</button>
+        </aside>
+        <div class="dash-main">
+          <div class="welcome"><div><p>Welcome back 👋</p><h2 id="welcome-role">Student</h2></div><span class="profile">AS</span></div>
+          <div class="stats">
+            <div><small>SkillMatch Score</small><b id="score">87%</b><span class="good">Good Match</span></div>
+            <div><small>Verified Skills</small><b>12</b><span>+3 this month</span></div>
+            <div><small>Applications</small><b>08</b><span>2 shortlisted</span></div>
+            <div><small>Profile Completion</small><b>92%</b><span>Almost complete</span></div>
+          </div>
+          <div class="dash-grid">
+            <div class="panel"><h3>Top Skills</h3><div class="skill-line"><span>React</span><b>92%</b></div><div class="bar"><i style="width:92%"></i></div><div class="skill-line"><span>Python</span><b>84%</b></div><div class="bar"><i style="width:84%"></i></div><div class="skill-line"><span>SQL</span><b>78%</b></div><div class="bar"><i style="width:78%"></i></div></div>
+            <div class="panel"><h3>Skills to Improve</h3><div class="gap"><span>Machine Learning</span><b>42%</b></div><div class="gap"><span>Advanced SQL</span><b>55%</b></div><div class="gap"><span>System Design</span><b>38%</b></div><button class="primary-btn small" onclick="alert('Upskilling recommendations opened!')">View Recommendations</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="student-card" id="studentDashboard" style="display:none">
+        <div class="ac-topbar">
+          <div class="mini-brand">Student</div>
+          <div class="ac-side-row">
+            <button class="active" data-st-view="overview" onclick="showStudentView('overview')">Overview</button>
+            <button data-st-view="records" onclick="showStudentView('records')">My Records</button>
+            <button data-st-view="mocks" onclick="showStudentView('mocks')">Mock Tests</button>
+            <button onclick="genericLogout()">Logout</button>
+          </div>
+        </div>
+        <div class="dash-main">
+          <div class="welcome"><div><p>Welcome back 👋</p><h2 id="stName">Student</h2><p id="stSub" class="muted"></p></div><span class="profile" id="stAvatar">ST</span></div>
+          <div id="stViewOverview">
+            <section class="panel st-profile"><div class="st-profile-head"><h3>Profile Details</h3><button class="secondary-btn small" onclick="toggleStudentEdit()">Edit Profile</button></div><div class="st-profile-grid"><div><small>Full Name</small><b id="stFullName">—</b></div><div><small>Gender</small><b id="stGender">—</b></div><div><small>Age</small><b id="stAge">—</b></div><div><small>Email</small><b id="stEmail">—</b></div><div><small>University</small><b id="stUni">—</b></div><div><small>Course</small><b id="stCourse">—</b></div><div><small>Roll No</small><b id="stRoll">—</b></div><div><small>Semester</small><b id="stSem">—</b></div></div><div id="stEditWrap" hidden><div class="ac-form-grid"><label>Full Name<input id="stFName" type="text"></label><label>Gender<select id="stFGender"><option value="">Select</option><option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option></select></label><label>Age<input id="stFAge" type="number" min="10" max="100"></label><label>Email<input id="stFEmail" type="email" placeholder="you@college.edu"></label><label>University<input id="stFUni" type="text"></label><label>Course<select id="stFCourse"><option value="">Select</option><option>B.Tech</option><option>BCA</option><option>B.Sc</option><option>B.Com</option><option>BA</option><option>BBA</option><option>MBA</option><option>B.Ed</option></select></label><label>Roll No<input id="stFRoll" type="text"></label><label>Semester<select id="stFSem"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label></div><p id="stFError" class="ac-error"></p><div class="ac-form-actions"><button class="secondary-btn" onclick="toggleStudentEdit(true)">Cancel</button><button class="primary-btn" onclick="saveStudentProfile()">Save Profile</button></div></div></section>
+            <div class="stats st-stats"><div><small>Verified Records</small><b id="stVerifiedCount">0</b><span>pushed by university</span></div><div><small>Self-declared</small><b id="stSelfCount">0</b><span>uploaded by you</span></div><div><small>Mock Tests Attempted</small><b id="stAttemptedCount">0</b><span id="stAvgLabel">avg —</span></div><div><small>Pending Mocks</small><b id="stPendingCount">0</b><span>to attempt</span></div></div>
+          </div>
+          <div id="stViewRecords" hidden>
+            <section class="panel"><h3>Academic Records</h3><p class="ac-hint">Records pushed by your university are marked <b>Verified</b>. Anything you upload yourself is marked <b>Self-declared</b>.</p><div class="ac-side-row st-tabs"><button class="active" id="stTabVerified" onclick="showStudentRecordsTab('verified')">Verified</button><button id="stTabSelf" onclick="showStudentRecordsTab('self')">Self-declared</button><span style="flex:1"></span><button class="upload-btn" onclick="openStudentUpload()">+ Upload Record</button></div><div id="stVerifiedList" class="st-record-list"></div><div id="stSelfList" class="st-record-list" hidden></div></section>
+          </div>
+          <div id="stViewMocks" hidden>
+            <section class="panel"><h3>Mock Tests</h3><p class="ac-hint">Attempt pending tests. Scores appear under <b>Attempted</b> with subject-wise marks.</p><div class="ac-side-row st-tabs"><button class="active" id="stTabAttempted" onclick="showStudentMocksTab('attempted')">Attempted</button><button id="stTabPending" onclick="showStudentMocksTab('pending')">Pending</button></div><div id="stAttemptedList" class="st-mock-list"></div><div id="stPendingList" class="st-mock-list" hidden></div></section>
+          </div>
+        </div>
+      </div>
+      <div class="academia-card" id="academiaDashboard" style="display:none">
+        <div class="ac-topbar">
+          <div class="mini-brand">Academia</div>
+          <div class="ac-side-row">
+            <button class="active" data-ac-view="marksheets" onclick="showAcademiaView('marksheets')">Marksheet Dashboard</button>
+            <button onclick="openAcAddForm()">Upload Marksheet</button>
+            <button data-ac-view="courses" onclick="showAcademiaView('courses')">Courses</button>
+            <button data-ac-view="students" onclick="showAcademiaView('students')">Students</button>
+            <button onclick="academiaLogout()">Logout</button>
+          </div>
+        </div>
+        <div class="dash-main">
+          <div class="welcome"><div><p id="academiaWelcomeSub">University portal</p><h2 id="academiaUniName">Academia Dashboard</h2></div><span class="profile" id="academiaAvatar">UN</span></div>
+          <div class="stats">
+            <div><small>Total Students</small><b id="acTotalStudents">0</b><span>across courses</span></div>
+            <div><small>Courses</small><b id="acTotalCourses">0</b><span id="acCourseListLabel">—</span></div>
+            <div><small>Average Score</small><b id="acAvgScore">—</b><span class="good">all subjects</span></div>
+            <div><small>Uploaded Sheets</small><b id="acTotalSheets">0</b><span>this semester</span></div>
+          </div>
+          <div id="acMarksheetsView">
+          <div class="panel">
+            <div class="ac-controls">
+              <div class="ac-filters">
+                <label>Course <select id="acCourseFilter" onchange="renderAcademiaTable()"></select></label>
+                <label>Search <input id="acSearch" type="text" placeholder="Student name / ID..." oninput="renderAcademiaTable()"></label>
+              </div>
+              <div class="ac-actions">
+                <button class="primary-btn small" onclick="openAcAddForm()">+ Add Record</button>
+              </div>
+            </div>
+            <p class="ac-hint">University adds each student marksheet via <b>+ Add Record</b>. Use the course filter to view a course, or search by name / roll no.</p>
+            <div class="table-wrap">
+              <table class="ac-table">
+                <thead><tr id="acHeadRow"></tr></thead>
+                <tbody id="acBodyRows"></tbody>
+              </table>
+            </div>
+          </div>
+          </div>
+          <section id="acCoursesView" class="ac-courses-view" hidden>
+            <div id="acCoursesHeading" class="ac-courses-heading">
+              <div><span class="eyebrow">ACADEMIC CATALOG</span><h3 id="acCatalogTitle">Courses</h3></div>
+              <fieldset class="ac-session-filter">
+                <legend>Session</legend>
+                <label>From<select id="acSessionFrom" onchange="renderAcademiaCourses()"></select></label>
+                <label>To<select id="acSessionTo" onchange="renderAcademiaCourses()"></select></label>
+              </fieldset>
+            </div>
+            <div id="acCourseCards" class="ac-course-grid"></div>
+            <section id="acCourseRoster" class="ac-course-roster" hidden>
+              <div class="ac-roster-heading">
+                <div><span class="eyebrow" id="acRosterSessionLabel"></span><h3 id="acRosterTitle"></h3></div>
+                <button type="button" class="secondary-btn" onclick="closeAcademiaRoster()">Back to courses</button>
+              </div>
+              <div class="table-wrap">
+                <table class="ac-table ac-roster-table">
+                  <thead><tr><th>Student</th><th>Roll No</th><th>Session</th><th>Semesters on file</th><th>Current semester</th></tr></thead>
+                  <tbody id="acRosterRows"></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="academiaLoginModal" class="modal" onclick="if(event.target.id==='academiaLoginModal')hideAcademiaLogin()">
+    <div class="modal-box" onclick="event.stopPropagation()"><button class="close" onclick="hideAcademiaLogin()">x</button><h2>Academia Login</h2><p>University portal.</p><div class="ac-login-form"><label>University Name<input id="acUniName" type="text" placeholder="e.g. Mumbai University"></label><label>Password<input id="acUniPass" type="password" placeholder="Enter academia password" onkeydown="if(event.key==='Enter')academiaLogin()"></label><p id="acLoginError" class="ac-error"></p><button class="primary-btn" onclick="academiaLogin()">Login to Dashboard</button></div></div>
+  </div>
+  <div id="acAddModal" class="modal" onclick="if(event.target.id==='acAddModal')closeAcAddForm()">
+    <div class="modal-box wide" onclick="event.stopPropagation()"><button class="close" onclick="closeAcAddForm()">x</button><h2>Add Student Record</h2><p>Enter student details + subject marks.</p><div class="ac-form-grid"><label>Student Name<input id="acFName" type="text" placeholder="e.g. Aarav Sharma"></label><label>Roll No<input id="acFRoll" type="text" placeholder="e.g. BTECH-009"></label><label>Course<select id="acFCourse"><option value="">Select course</option><option>B.Tech</option><option>BCA</option><option>B.Sc</option><option>B.Com</option><option>BA</option><option>BBA</option><option>MBA</option><option>B.Ed</option></select></label><label>Semester No<select id="acFSem"><option value="">Select</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></label><label>Session<select id="acFSession"></select></label></div><div class="sub-head"><b>Subjects + Marksheets</b><button type="button" class="upload-btn" onclick="acAddSubjectRow()">+ Add Subject</button></div><p class="ac-hint">Type marks manually, or attach a <b>.csv</b> marksheet for that subject — the file is parsed and marks auto-filled. CSV can be a single number (e.g. <b>85</b>) or <b>Subject,Marks</b>.</p><div id="acFSubjects"></div><p id="acFError" class="ac-error"></p><div class="ac-form-actions"><button class="secondary-btn" onclick="closeAcAddForm()">Cancel</button><button class="primary-btn" onclick="submitAcAddForm()">Save Record</button></div></div>
+  </div>
+  <div id="stUploadModal" class="modal" onclick="if(event.target.id==='stUploadModal')closeStudentUpload()">
+    <div class="modal-box" onclick="event.stopPropagation()"><button class="close" onclick="closeStudentUpload()">×</button><h2>Upload Record</h2><p>Self-declared — shown as <b>Self-declared</b> until verified by your university.</p><div class="ac-login-form"><label>Title<input id="stUTitle" type="text" placeholder="e.g. Sem 4 Marksheet / Coursera Certificate"></label><label>Subject / Type<input id="stUSubject" type="text" placeholder="e.g. DBMS / Certificate"></label><label>Score / Grade (optional)<input id="stUScore" type="text" placeholder="e.g. 88 / A+"></label><label>Attach file (optional)<input id="stUFile" type="file"></label><p id="stUError" class="ac-error"></p><div class="ac-form-actions"><button class="secondary-btn" onclick="closeStudentUpload()">Cancel</button><button class="primary-btn" onclick="submitStudentUpload()">Upload</button></div></div></div>
+  </div>
+  <div id="stMockModal" class="modal" onclick="if(event.target.id==='stMockModal')closeStudentMock()">
+    <div class="modal-box wide" onclick="event.stopPropagation()"><button class="close" onclick="closeStudentMock()">×</button><h2 id="stMockTitle">Mock Test</h2><p id="stMockSub" class="ac-hint"></p><div id="stMockQs"></div><p id="stMockError" class="ac-error"></p><div class="ac-form-actions"><button class="secondary-btn" onclick="closeStudentMock()">Cancel</button><button class="primary-btn" onclick="submitStudentMock()">Submit Test</button></div></div>
+  </div>
+
+  <footer class="site-footer"><div class="foot-grid"><div class="foot-brand"><div class="brand"><span class="brand-mark">E</span> Elevate</div><p>Connecting skills with opportunities.</p><div class="social-links"><a href="#" aria-label="LinkedIn" title="LinkedIn">in</a><a href="#" aria-label="X" title="X">𝕏</a><a href="#" aria-label="YouTube" title="YouTube">▶</a></div></div><div class="foot-col"><h4>About</h4><a href="#">About us</a><a href="#">Careers</a><a href="#">Press</a><a href="#">Blog</a></div><div class="foot-col"><h4>Support</h4><a href="#">Help center</a><a href="#">Contact support</a><a href="#">FAQs</a></div><div class="foot-col"><h4>Legal &amp; Privacy</h4><a href="#">Privacy policy</a><a href="#">Terms of use</a><a href="#">Cookie settings</a><a href="#">Accessibility</a></div><div class="foot-col"><h4>Trust &amp; Safety</h4><a href="#">Report a job or profile</a><a href="#">Scam-safety guidance</a><a href="#">Community guidelines</a></div></div><div class="foot-bottom"><span>© <span id="footYear">2026</span> Elevate. All rights reserved.</span><span>Made for skill-first hiring.</span></div></footer>
+
+  <div id="loginModal" class="modal" onclick="closeLogin(event)">
+    <div class="modal-box" onclick="event.stopPropagation()"><button class="close" onclick="hideLogin()">×</button><h2>Welcome to Elevate</h2><p>Choose a role to continue.</p><div class="login-roles"><button onclick="hideLogin();openRoleLogin('Student')">🎓 Student</button><button onclick="hideLogin();openRoleLogin('Industry')">🏢 Industry</button><button onclick="hideLogin();openRoleLogin('Academia')">🏫 Academia</button></div></div>
+  </div>
+  <div id="roleLoginModal" class="modal" onclick="if(event.target.id==='roleLoginModal')hideRoleLogin()">
+    <div class="modal-box" onclick="event.stopPropagation()"><button class="close" onclick="hideRoleLogin()">×</button><h2 id="roleLoginTitle">Role Login</h2><p id="roleLoginSub">Enter password to continue.</p><div class="ac-login-form"><label id="roleLoginNameLabel">Name<input id="roleLoginName" type="text" placeholder="Enter name"></label><label>Password<input id="roleLoginPass" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')submitRoleLogin()"></label><p id="roleLoginError" class="ac-error"></p><button class="primary-btn" onclick="submitRoleLogin()">Login to Dashboard</button></div></div>
+  </div>
+
+  <script src="elevate.js"></script>
+</body>
+</html>
+
+
+
+
+
+
